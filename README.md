@@ -1,4 +1,4 @@
-# ColdFusion Authorize.net API CFC
+# ColdFusion UPS API CFC
 
 This is a ColdFusion CFC used to connect to UPS API using OAuth.
 
