@@ -1,6 +1,7 @@
-# ColdFusion UPS API CFC
+# ColdFusion UPS OAuth API CFC
 
 This is a ColdFusion CFC used to connect to UPS API using OAuth.
+All old UPS Access Keys will no longer be supported on June 3, 2024. See https://developer.ups.com/oauth-developer-guide
 
 ## API's Supported:
  * Rate
@@ -10,7 +11,7 @@ This is a ColdFusion CFC used to connect to UPS API using OAuth.
 * ACF 10+
 * Lucee 5+
 
-To authenticate with the UPS API, use your application's OAuth ID and SECRET. If you don't have these credentials, setup your application from https://developer.ups.com.
+To authenticate with the UPS API, register and use your application's OAuth ID and SECRET. If you don't have these credentials, setup your application from https://developer.ups.com.
 
 ## Initialization
 
@@ -29,10 +30,10 @@ This will init the cfc and setup testing or production URL.
 See upstest.cfm.
 
 Steps:
-	1. Retrieve site token. This is not a user specific token requiring them to login to UPS.
-	(Store token and expiration somewhere you can retrieve such as a DB. Sample just uses a cookie. You can the use same key until expiration where you will need to get a new token)
-	2. Create 2 structures. First is the request parameters. Second is the structure using case specific keys for the request JSON. See API documentation for key names.
-	3. Call api passing token, parameter structure, and request structure.
+1. Retrieve site token. This is not a user specific token requiring them to login to UPS.
+(Store token and expiration somewhere you can retrieve such as a DB. Sample just uses a cookie. You can the use same key until expiration where you will need to get a new token)
+2. Create two structures. First is the request parameters. Second is the structure using case specific keys for the request JSON. See API documentation for key names.
+3. Call api passing token, parameter structure, and request structure.
 
 ## Response
 
