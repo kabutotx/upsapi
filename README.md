@@ -5,6 +5,9 @@ All old UPS Access Keys will no longer be supported on June 3, 2024. See https:/
 
 ## API's Supported:
  * Rate
+ * Tracking
+ * Time In Transit
+ * Address Validation
  
 
 ## Requirements
