@@ -61,4 +61,46 @@ upsParameters.transId = "test";
 result = upsapi.tracking(token, upsParameters);
 writeDump(label="TRACKING", var=result);
 
+/* TIME IN TRANSIT */
+upsParameters = structNew();
+upsParameters.version = "v1";
+upsRequest = structNew();
+upsRequest["originCountryCode"]="DE";
+upsRequest["originPostalCode"]="10703";
+upsRequest["destinationCountryCode"]="US";
+upsRequest["destinationStateProvince"]="NH";
+upsRequest["destinationCityName"]="MANCHESTER";
+upsRequest["destinationPostalCode"]="03104";
+upsRequest["weight"]="10.5";
+upsRequest["weightUnitOfMeasure"]="LBS";
+upsRequest["shipmentContentsValue"]="10.5";
+upsRequest["shipmentContentsCurrencyCode"]="USD";
+upsRequest["billType"]="03";
+upsRequest["avvFlag"]=true;
+upsRequest["numberOfPackages"]="1";
+result = upsapi.timeInTransit(token, upsParameters, upsRequest);
+writeDump(label="TIME IN TRANSIT", var=result);
+
+/* Address Validation */
+upsParameters = structNew();
+upsParameters.version = "v1";
+//upsParameters.requestoption = "3";
+address = structNew();
+address["ShipperAddressLine"] = arrayNew(1);
+arrayAppend(address.ShipperAddressLine, "26601 ALISO CREEK ROAD");
+arrayAppend(address.ShipperAddressLine, "STE D");
+arrayAppend(address.ShipperAddressLine, "ALISO VIEJO TOWN CENTER");
+upsRequest = structNew();
+upsRequest["XAVRequest"]["AddressKeyFormat"]["ConsigneeName"]="ConsigneeName";
+upsRequest["XAVRequest"]["AddressKeyFormat"]["BuildingName"]="Innoplex";
+upsRequest["XAVRequest"]["AddressKeyFormat"]["AddressLine"]=address;
+upsRequest["XAVRequest"]["AddressKeyFormat"]["Region"]="ROSWELL,GA,30076-1521";
+upsRequest["XAVRequest"]["AddressKeyFormat"]["PoliticalDivision2"]="ALISO VIEJO";
+upsRequest["XAVRequest"]["AddressKeyFormat"]["PoliticalDivision1"]="CA";
+upsRequest["XAVRequest"]["AddressKeyFormat"]["PostcodePrimaryLow"]="92656";
+upsRequest["XAVRequest"]["AddressKeyFormat"]["PostcodeExtendedLow"]="1521";
+upsRequest["XAVRequest"]["AddressKeyFormat"]["Urbanization"]="porto arundal";
+upsRequest["XAVRequest"]["AddressKeyFormat"]["CountryCode"]="US";
+result = upsapi.addressValidation(token, upsParameters, upsRequest);
+writeDump(label="ADDRESS VALIDATION", var=result);
 </cfscript>
